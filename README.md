@@ -21,5 +21,5 @@ We built a fully functional website using **HTML and CSS**, developed in **Visua
 
 ### 📂 How to Use
 1. Clone or download the repo
-2. Open the FullWeb.html in a browser
+2. Open the **FullWeb.html** in a browser
 3. Explore the game news, recommendations, and shop interface!
