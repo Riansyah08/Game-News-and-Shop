@@ -4,17 +4,20 @@ We built a fully functional website using **HTML and CSS**, developed in **Visua
 - 📰 **Game News & Information**
 - 🎯 **Game Recommendations**
 - 🛒 **Game Shop with Login System**
+<br>
 
 ### 💻 Technologies Used
 - HTML5
 - CSS3
 - Visual Studio Code
+<br>
 
 ### 🔐 Features
 - ✅ Game info and news layout
 - ✅ Game recommendation section
 - ✅ Login system (frontend)
 - ✅ Game shop mockup UI
+<br>
 
 ### 📂 How to Use
 1. Clone or download the repo
