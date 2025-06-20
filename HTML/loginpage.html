@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/CSS/loginpage.css" rel="stylesheet">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            //the program works 
+            $("#btnCheck").click(function(){
+                let pass1 = $("#pass1").val();
+                let email1 = $("#email").val();
+                if (pass1 != "" && pass1.length == 8 ){
+                    alert("your password is able to be used")
+                }
+                else{
+                    alert("your password is unable to be used")
+                }
+        });
+    })
+    $(function register() {
+        let email = document.getElementById("email").value;
+        let atIndex = email.indexOf("@"); // find location of @
+        let dotIndex = email.lastIndexOf("."); // last location of .
+            if (atIndex < 1 || dotIndex < atIndex + 2 || dotIndex + 2 >= email.length) {
+                alert("Invalid email format!");
+                return false;
+    }})
+    </script>
+</head>
+<body>
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        <form>
+            <h1>Create Account</h1>
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <button>Sign Up</button>
+        </form>
+    </div>
+    <div class="form-container sign-in-container">
+        <form action="FullWeb.html">
+            <h1>Create account</h1>
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="pass2" placeholder="Password">
+            <button id="btnCheck"><a href="forgetpass.html">Forget Password</a></button>
+            <br>
+            <button id="btnCheck"><a href="FullWeb.html">entry</a></button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us please login with your personal info</p>
+                <button class="ghost" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Gamers</h1>
+                <p>please input your email account and please make a password to register</p>
+                <p>* the password must atlest be 8 words long</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

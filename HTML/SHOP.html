@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/shop.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+    <script>
+        let selectedProductIndex = 0;
+
+        function addToCart(button) {
+            let product = button.parentElement;
+            let productName = product.querySelector("h2").innerHTML;
+            let selectedValue = document.getElementById("valueSelection").value;
+            
+            let item = document.createElement("li");
+            item.innerHTML = productName + " - " + selectedValue;
+            
+            document.getElementById("cartitems").appendChild(item);
+        }
+
+        function removeItem(button) {
+            let cartitems = document.getElementById("cartitems");    
+            if (cartitems.hasChildNodes()) {
+                cartitems.removeChild(cartitems.lastChild);
+            } else {
+                alert("Cannot remove anymore.");
+            }
+        }
+
+        function changeValue(selectElement) {
+            var selectedValue = selectElement.value;
+            alert("Selected value: " + selectedValue);
+        }
+
+        function changeColour(element) {
+            element.style.backgroundColor = "lime";
+        }
+
+        function resetColor(element) {
+            element.style.backgroundColor = "";
+        }
+
+        function handleKeyPress(event) {
+            const products = document.getElementsByClassName("product");
+            resetColor(products[selectedProductIndex]);
+            switch (event.key) {
+                case "ArrowLeft":
+                    selectedProductIndex = Math.max(0, selectedProductIndex - 1);
+                    break;
+                case "ArrowRight":
+                    selectedProductIndex = Math.min(products.length - 1, selectedProductIndex + 1);
+                    break;
+            }
+            changeColour(products[selectedProductIndex]);
+        }
+
+        $(document).ready(function(){
+            $("#show").click(function(){
+                $("#cart").animate({width:'toggle'}, 400);
+            });
+            $("#hide").click(function(){
+                $("#cart").animate({width:'toggle'}, 400);
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1 id="storeTitle">SHOP</h1>
+        <button id="show">Show List</button>
+        <button id="hide">Hide List</button>
+    </header>
+<body onkeydown="handleKeyPress(event)">
+    <header>
+        <div class="removebutton">
+            <button onclick="removeItem(this)">Remove</button>
+        </div>
+        <aside id="cart">
+            <h2>Shopping Cart</h2>
+            Select The Value Of the things that you want to buy here
+            <label for="valueSelection">Select Value:</label>
+            <select id="valueSelection" onchange="changeValue(this)">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select><br>
+            <ul id="cartitems"></ul>
+        </aside>
+    </header>
+    <main>
+        <section class="product" id="product1" onmouseover="changeColour(this)" onmouseout="resetColor(this)">
+            <img src="https://cf.shopee.ph/file/sg-11134201-22110-ls6wr60aeejv86" width="150px" alt="Product Image">
+            <h2 tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">KUCA</h2>
+            <p> Packing size: 80*25*58 <br>
+                Seat weight: 14kg <br>
+                Maximum load: 200KG <br>
+                Seat lift function 36-44cm <br>
+                Reclining backrest angle 135° <br>
+            </p>
+            <p tabindex="0" onfocus="this.style.color='red'" onblur="this.style.color=''">$32.21</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </section>
+
+        <section class="product" id="product2" onmouseover="changeColour(this)" onmouseout="resetColor(this)">
+            <img src="https://cf.shopee.co.th/file/0810fd7164fa8fae893a8b9aa976fe4d" width="150px" alt="Product Image">
+            <h2 tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">Keep Going Max</h2>
+            <p> Total height 125-133CM <br>
+                Back height: 80 CM <br>
+                Seat width: 38CM <br>
+                Sitting depth: 48cm <br>
+                Seating height: 36-46 CM <br>
+                Steel legs of the chair <br>
+                Fine lines <br>
+            </p>
+            <p tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">$25,75</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </section>
+
+        <section class="product" id="product2" onmouseover="changeColour(this)" onmouseout="resetColor(this)">
+            <img src="https://files.pccasegear.com/UserFiles/ONEX-GX330-BB-onex-gx330-series-gaming-chair-black-blue-product1.jpg" width="150px" alt="Product Image">
+            <h2 tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">Onex</h2>
+            <p> Premium leatherette <br>
+                Adjustable head and back 90°–135° <br>
+                adjustable backrest 3°–18° <br>
+                Seat dimension 53 x 54 x 50 - 58 cm <br>
+                Backrest dimension 56 x 84 cm <br>
+            </p>
+            <p tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">$232,31</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </section>
+
+        <section class="product" id="product2" onmouseover="changeColour(this)" onmouseout="resetColor(this)">
+            <img src="https://www.zotac.com/download/files/styles/org/public/product_main_image/graphics_cards/zt-a30600h-10m-image01_1.jpg?itok=7HM8aX7l" width="150px" alt="Product Image">
+            <h2 tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">ZOTAC GAMING Geforce <br> RTX 3060 Twin Edge OC</h2>
+            <p> - 2nd Gen Ray Tracing Cores <br>
+                - 3rd Gen Tensor Cores <br>
+                - IceStorm 2.0 Advanced Cooling <br>
+                - Active Fan Control with FREEZE Fan Stop <br>
+                - Metal Backplate <br>
+                - FireStorm Utility <br>
+                - VR Ready <br>
+            </p>
+            <p tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">$289.86</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </section>
+
+        <section class="product" id="product2" onmouseover="changeColour(this)" onmouseout="resetColor(this)">
+            <img src="https://th.bing.com/th/id/OIP.seIpw7M1VkfY8AMdszM4wQHaHa?rs=1&pid=ImgDetMain" width="150px" alt="Product Image">
+            <h2 tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">ASUS Dual GeForce <br> RTX™ 3060 12GB GDDR6</h2>
+            <p> -the latest Ampere SM and better power efficiency. <br>
+                -2nd Gen RT Cores <br> 
+                -RT and shading that deliver a whole new level <br> of ray tracing performance. <br>
+                -3rd Gen Tensor Cores <br>
+            </p>
+            <p tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">$676,27</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </section>
+
+        <section class="product" id="product2" onmouseover="changeColour(this)" onmouseout="resetColor(this)">
+            <img src="https://down-my.img.susercontent.com/file/my-11134207-23030-qr34rxwinsov72" width="150px" alt="Product Image">
+            <h2 tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">AOC 24G2Z 23.8" <br> 240Hz Gaming Monitor</h2>
+            <p> •	AdaptiveSync <br>
+                •	240Hz <br>
+                •	0.5ms <br>
+                •	HDR Mode <br>
+                •	IPS <br>
+                •	Adjustable Stand <br>
+            </p>
+            <p tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">$283,93</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </section>
+
+        <section class="product" id="product2" onmouseover="changeColour(this)" onmouseout="resetColor(this)">
+            <img src="https://cf.shopee.com.my/file/05590e4e39951920e1192a45e8a24827" width="150px" alt="Product Image">
+            <h2 tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">SAMSUNG 27" C27RG50 <br> Curved Gaming Monitor <br> 240Hz G-Sync 4ms (GTG)</h2>
+            <p> •	240Hz Refresh Rate <br>
+                •	NVIDIA® G-SYNCTM Compatible <br>
+                •	Curved Screen <br>
+                •	Eye Saver Mode <br>
+                •	Picture Mode <br>
+            </p>
+            <p tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">$322,65</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </section>
+
+        <section class="product" id="product2" onmouseover="changeColour(this)" onmouseout="resetColor(this)">
+            <img src="https://i.ytimg.com/vi/fXUfmfFTWLk/maxresdefault.jpg" width="150px" alt="Product Image">
+            <h2 tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">ViewSonic XG2431 24” <br> 240Hz 0.5ms MPRT Response <br> Time Blur Busters <br> Approved 2.0 Certified Gaming Monitor</h2>
+            <p> •	Blur Busters 2.0 Certified <br>
+                •	240Hz Refresh Rate <br>
+                •	Fast-IPS Display with VESA DisplayHDR 400 <br>
+                •	< 0.5ms MPRT Response Time <br>
+                •	AMD FreeSync™ Premium <br>
+                •	Full HD Resolution <br>
+            </p>
+            <p tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">$353,89</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </section>
+
+        <section class="product" id="product2" onmouseover="changeColour(this)" onmouseout="resetColor(this)">
+            <img src="https://cf.shopee.co.id/file/sg-11134201-22110-pgksorj60vjv12" width="150px" alt="Product Image">
+            <h2 tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">NYK NEMESIS K-01 Legion <br> ｜ TKL K-01</h2>
+            <p> • Has the advantage of splashproof design <br> that makes the keyboard splashproof <br>
+                • Relatively affordable price for gaming keyboard <br>
+            </p>
+            <p tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">$9.34</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </section>
+
+        <section class="product" id="product2" onmouseover="changeColour(this)" onmouseout="resetColor(this)">
+            <img src="https://www.klikgalaxy.com/image-product/img44862-1664096739.jpg" width="150px" alt="Product Image">
+            <h2 tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">REXUS Gaming Keyboard <br> Battlefire K9E</h2>
+            <p> • Four stylish dual-tone color options <br>
+                • Equipped with rainbow backlight and keylight <br>
+            </p>
+            <p tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">$17.33</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </section>
+
+        <section class="product" id="product2" onmouseover="changeColour(this)" onmouseout="resetColor(this)">
+            <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/90/MTA-50237432/oem_oem_full01.jpg" width="150px" alt="Product Image">
+            <h2 tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">SADES Sabre Tenkeyless <br> RGB Backlight Keyboard</h2>
+            <p> • Has a bright RGB backlight <br>
+                • The presence of a braided cable so that the cable is <br> not  easily tangled and damaged <br>
+                • Already equipped with 25 Anti-Ghosting buttons <br>
+            </p>
+            <p tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">$24,20</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </section>
+
+        <section class="product" id="product2" onmouseover="changeColour(this)" onmouseout="resetColor(this)">
+            <img src="https://telefonika.com/wp-content/uploads/2021/04/LOGITECH-G613-WIRLESS-MECHANICAL-GAMING-KEYBOARD_1.png" width="150px" alt="Product Image">
+            <h2 tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">Logitech G613 Wireless <br> Mechanical Gaming Keyboard</h2>
+            <p> • Suitable for gaming and daily productivity <br>
+                • Fast wireless connection that makes the game more fun <br>
+                • Easy built-in app setup <br>
+            </p>
+            <p tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">$88.82</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </section>
+
+        <section class="product" id="product2" onmouseover="changeColour(this)" onmouseout="resetColor(this)">
+            <img src="https://lale.ams3.digitaloceanspaces.com/fantech/uploads/attachment/upload/1702/FANTECH_MAXFIT67_MK858_MODULAR_BLUETOOTH__WIRELESS_RGB_MECHANICAL_KEYBOARD.jpg" width="150px" alt="Product Image">
+            <h2 tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">Fantech MAXFIT67 Keyboard <br> Modular Mechanical</h2>
+            <p> • Has a multifunction knob <br> for adjusting volume and macro functions <br>
+                • Programmable RGB backlight <br>
+            </p>
+            <p tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">$160.97</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </section>
+
+        <section class="product" id="product2" onmouseover="changeColour(this)" onmouseout="resetColor(this)">
+            <img src="https://www.geewiz.co.za/170591-large_default/redragon-k530-draconic-60-compact-rgb-wireless-mechanical-keyboard-black.jpg" width="150px" alt="Product Image">
+            <h2 tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">Reddragon K530 60% RGB Black <br> Wireless Mechanical Keyboard</h2>
+            <p> • Compact and compact size <br>
+                • Switch or axis can be changed according to taste <br>
+            </p>
+            <p tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">$61.19</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </section>
+
+        <section class="product" id="product2" onmouseover="changeColour(this)" onmouseout="resetColor(this)">
+            <img src="https://cf.shopee.co.id/file/bd541be2fae321bd51d5c15e100edca1" width="150px" alt="Product Image">
+            <h2 tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">Digital Alliance <br> Meca Warrior RGB</h2>
+            <p> • Light weight, but still firm <br>
+                • Has ten RGB light modes <br> and can be set via the app <br>
+            </p>
+            <p tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">$32.14</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </section>
+
+        <section class="product" id="product2" onmouseover="changeColour(this)" onmouseout="resetColor(this)">
+            <img src="https://ru.gecid.com/data/periph/202006120800-60181/img/02_asus_rog_strix_scope_tkl_deluxe.jpg" width="150px" alt="Product Image">
+            <h2 tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">ASUS ROG Strix <br> Scope TKL</h2>
+            <p> • Twice as large CTRL key <br> for improved accuracy and <br> precision in FPS games <br>
+                • Detachable USB Type-C cable <br>
+                • RGB backlight can be set via app <br>
+            </p>
+            <p tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">$119.74</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </section>
+
+        <section class="product" id="product2" onmouseover="changeColour(this)" onmouseout="resetColor(this)">
+            <img src="https://static-geektopia.com/storage/geek/products/corsair/k100-rgb/k100_rgb_04.jpg" width="150px" alt="Product Image">
+            <h2 tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">Corsair K100 RGB <br> Optical-Mechanical Gaming Keyboard</h2>
+            <p> • Fast and responsive <br> keyboard performance <br>
+                • There is an armrest with <br> comfortable memory foam cushion <br>
+                • Keyboard is customizable <br> and can save 200 profiles <br>
+            </p>
+            <p tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">$193.17</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </section>
+
+        <section class="product" id="product2" onmouseover="changeColour(this)" onmouseout="resetColor(this)">
+            <img src="https://basic-tutorials.com/wp-content/uploads/2021/06/Razer-BlackWidow-V3-Mini-HyperSpeed-01-780x470.jpg" width="150px" height="150px" alt="Product Image">
+            <h2 tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">Razer BlackWidow V3 Mini HyperSpeed</h2>
+            <p> • Good and solid build quality <br>
+                • Has three connection modes, <br> namely USB Type-C, Bluetooth, <br> and wireless dongle <br>
+                • Responsive tactile buttons <br>
+            </p>
+            <p tabindex="0" onfocus="this,style.color='red'" onblur="this.style.color=''">$180.29</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </section>
+    </main>
+</body>
+</html>
